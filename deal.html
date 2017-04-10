@@ -5,7 +5,7 @@
       <div id="categoryBanner">category banner</div>
       <div>
         <ol id="productsList">
-          <li>
+          <!-- <li>
             <a href="#">
               <div class="thumbnailImg">
                 <img src="" alt="">
@@ -23,7 +23,7 @@
               </div>
             </a>
           </li>
-          <li>*5</li>
+          <li>*5</li> -->
         </ol>
       </div>
     </div>
@@ -50,7 +50,7 @@
 
     //ol 아래의 li length이 1 이하이면, ajax
     function initData(bannerDiv, productsList) {
-      if (bannerDiv.children.length() === 0) {
+      if (bannerDiv.children.length === 0) {
         callAjax({
           url: './bannerItems.json',
           sendType: 'get',
@@ -92,11 +92,39 @@
       });
     }
 
-    function appendToDom() {
+    function appendToDom(insertData) {
+      var dataLength = insertData.length;
+      var appendStr = '';
+      var price = 0;
+      for (var i=0; i<dataLength; i++) {
+        appendStr +='<li><a href='+insertData[i].url +
+        '><div class="thumbnailImg"><img src="' + insertData[i].img.src +
+        '" alt="">' + insertData[i].img.name +
+        '</div><div class="productInfo"><div class="titleBox">'+ insertData[i].name;
+        if (insertData[i].sPrice) {
+          price = insertData[i].sPrice;
+        } else if (insertData[i].dPrice) {
+          price = insertData[i].dPrice;
+        } else {
+          price = insertData[i].price;
+        }
+        appendStr += '</div><div class="priceBox">'+price+'</div>';
+        // appendSticker(insertData[i].sticker);
+        }
+    }
 
+    function appendSticker(stickerData) {
+      for (var j=0; j < stickerData.length; j++) {
+        if(stickerData[j]) {
+          appendStr += '<div class="iconBox"><img src="" alt="'+stickerData[j].name+
+          '"></div></div>';
+        }
+      }
+      appendStr += '</a></li>';
     }
 
     initData($('#categoryBanner'), $('#productsList > li'));
     </script>
+
   </body>
 </html>

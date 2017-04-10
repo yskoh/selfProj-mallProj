@@ -13,13 +13,13 @@ var productItems = [
       "newTo": "2017-04-10"
     },
     "sticker": {
-      "one": "",
-      "new": "http://icon-park.com/imagefiles/new_circle_icon_green.png",
-      "sale": "http://res.freestockphotos.biz/pictures/1/1738-illustration-of-a-red-sales-sticker-pv.png",
-      "app": ""
+      "one": {"src": "", "name": "sticker-one"},
+      "new": {"src": "http://icon-park.com/imagefiles/new_circle_icon_green.png", "name": "sticker-new"},
+      "sale": {"src": "http://res.freestockphotos.biz/pictures/1/1738-illustration-of-a-red-sales-sticker-pv.png", "name": "sticker-sale"},
+      "app": {"src": "", "name": "sticker-app"}
     },
     "img": {
-      "src":,
+      "src":"",
       "name": "productOne"
     }
   }

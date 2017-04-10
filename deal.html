@@ -2,9 +2,9 @@
   <head></head>
   <body>
     <div>
-      <div>category banner</div>
+      <div id="categoryBanner">category banner</div>
       <div>
-        <ol>
+        <ol id="productsList">
           <li>
             <a href="#">
               <div class="thumbnailImg">
@@ -39,17 +39,33 @@
         10개 이상? -> 레이지로드 준비
       - 클릭 시 상세 딜로 이동-> a link에 주소
     -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-    function setAjaxInfo(infoData) {
-      if (infoData가 있고 형태가 오브젝이고, 키의 값들이 있다면) {
-      }
-    }
-
     var ajaxInfo = {
       url: './pItems.json',
       sendType: 'get',
       param: '',
       successFunc: appendToDom
+    };
+
+    //ol 아래의 li length이 1 이하이면, ajax
+    function initData(bannerDiv, productsList) {
+      if (bannerDiv.children.length() === 0) {
+        callAjax({
+          url: './bannerItems.json',
+          sendType: 'get',
+          param: '',
+          successFunc: appendToDom
+        });
+      }
+      if (productsList.length < 1) {
+        callAjax({
+          url: './pItems.json',
+          sendType: 'get',
+          param: '',
+          successFunc: appendToDom
+        });
+      }
     }
 
     function callAjax(ajaxInfo) {
@@ -68,7 +84,7 @@
               alert('해당 결과가 존재하지 않습니다');
             }
           } else {
-            alert('code and message not defined');
+            alert('Message not defined');
           }
         },
         type: ajaxInfo.sendType,
@@ -80,6 +96,7 @@
 
     }
 
+    initData($('#categoryBanner'), $('#productsList > li'));
     </script>
   </body>
 </html>

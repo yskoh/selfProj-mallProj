@@ -6,7 +6,7 @@
       <div>
         <ol>
           <li>
-            <a href="">
+            <a href="#">
               <div class="thumbnailImg">
                 <img src="" alt="">
               </div>
@@ -27,5 +27,39 @@
         </ol>
       </div>
     </div>
+    <!--
+    ajax 통신을 하여 받은 data를
+    for문을 돌면서 넣어준다
+    * 필요한 함수들
+      - ajax 요청해주는 함수
+        input
+      - 받은 데이터를 dom에 append해주는 함수
+        원하는 형태 data 왔는지 확인,
+        개수 0? -> 없음 보여주기
+        10개 이상? -> 레이지로드 준비
+      - 클릭 시 상세 딜로 이동-> a link에 주소
+    -->
+    <script>
+    function setAjaxInfo(infoData) {
+      if (infoData가 있고 형태가 오브젝이고, 키의 값들이 있다면) {
+      }
+    }
+
+    var ajaxInfo = {
+      url: './pItems.json',
+      sendType: 'get',
+      param: '',
+      successFunc: appendToDom
+    }
+
+    function callAjax(ajaxInfo) {
+
+    }
+    
+    function appendToDom() {
+
+    }
+
+    </script>
   </body>
 </html>

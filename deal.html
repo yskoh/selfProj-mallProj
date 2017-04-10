@@ -53,9 +53,29 @@
     }
 
     function callAjax(ajaxInfo) {
-
+      $.ajax({
+        url: ajaxInfo.url,
+        data: ajaxInfo.param,
+        dataType: 'json',
+        error: function () {
+          alert('잠시 후 다시 시도해 주세요.');
+        },
+        success: function (ajaxRetData) {
+          if (ajaxRetData.message !== null) {
+            if (ajaxRetData.message === 'OK') {
+              ajaxInfo.successFunc(ajaxRetData);
+            } else {
+              alert('해당 결과가 존재하지 않습니다');
+            }
+          } else {
+            alert('code and message not defined');
+          }
+        },
+        type: ajaxInfo.sendType,
+        cache: false
+      });
     }
-    
+
     function appendToDom() {
 
     }

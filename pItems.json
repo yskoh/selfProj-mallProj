@@ -1,0 +1,26 @@
+var productItems = [
+  { "id": 1,
+    "name": "productOne",
+    "url": "https://dummyimage.com/600x400/000/fff.jpg&text=1",
+    "storeId": 1,
+    "price": {
+      "nPrice": 1000,
+      "spPrice": 600,
+      "dPrice": 800
+    },
+    "duration": {
+      "newFrom": "2017-04-01",
+      "newTo": "2017-04-10"
+    },
+    "sticker": {
+      "one": "",
+      "new": "http://icon-park.com/imagefiles/new_circle_icon_green.png",
+      "sale": "http://res.freestockphotos.biz/pictures/1/1738-illustration-of-a-red-sales-sticker-pv.png",
+      "app": ""
+    },
+    "img": {
+      "src":,
+      "name": "productOne"
+    }
+  }
+];

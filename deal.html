@@ -79,7 +79,6 @@
         },
         success: function (ajaxRetData) {
           console.log('in success');
-          debugger;
           if (ajaxRetData.message !== undefined && ajaxRetData.message !== null) {
             if (ajaxRetData.message === 'OK') {
               ajaxInfo.successFunc(ajaxRetData);
@@ -96,7 +95,6 @@
     }
 
     function appendToDom(insertData) {
-      debugger;
       var productItems = insertData.productItems;
       var dataLength = productItems.length;
       var appendStr = '';

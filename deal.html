@@ -74,10 +74,13 @@
         data: ajaxInfo.param,
         dataType: 'json',
         error: function () {
+          console.log('in error');
           alert('잠시 후 다시 시도해 주세요.');
         },
         success: function (ajaxRetData) {
-          if (ajaxRetData.message !== null) {
+          console.log('in success');
+          debugger;
+          if (ajaxRetData.message !== undefined && ajaxRetData.message !== null) {
             if (ajaxRetData.message === 'OK') {
               ajaxInfo.successFunc(ajaxRetData);
             } else {
@@ -93,30 +96,33 @@
     }
 
     function appendToDom(insertData) {
-      var dataLength = insertData.length;
+      debugger;
+      var productItems = insertData.productItems;
+      var dataLength = productItems.length;
       var appendStr = '';
       var price = 0;
-      for (var i=0; i<dataLength; i++) {
-        appendStr +='<li><a href='+insertData[i].url +
-        '><div class="thumbnailImg"><img src="' + insertData[i].img.src +
-        '" alt="">' + insertData[i].img.name +
-        '</div><div class="productInfo"><div class="titleBox">'+ insertData[i].name;
-        if (insertData[i].sPrice) {
-          price = insertData[i].sPrice;
-        } else if (insertData[i].dPrice) {
-          price = insertData[i].dPrice;
+      for (var i = 0; i < dataLength; i++) {
+        appendStr +='<li><a href='+productItems[i].url +
+        '><div class="thumbnailImg"><img src="' + productItems[i].img.src +
+        '" alt="' + productItems[i].img.name + '">' + productItems[i].img.name +
+        '</div><div class="productInfo"><div class="titleBox">'+ productItems[i].name;
+        if (productItems[i].price.spPrice) {
+          price = productItems[i].price.spPrice;
+        } else if (productItems[i].price.dPrice) {
+          price = productItems[i].price.dPrice;
         } else {
-          price = insertData[i].price;
+          price = productItems[i].price.nPrice;
         }
-        appendStr += '</div><div class="priceBox">'+price+'</div>';
-        // appendSticker(insertData[i].sticker);
+        appendStr += '</div><div class="priceBox"><span>'+price+'</span></div>';
+        appendSticker(productItems[i].sticker, appendStr);
+        $('#productsList').append(appendStr);
         }
     }
 
-    function appendSticker(stickerData) {
+    function appendSticker(stickerData, appendStr) {
       for (var j=0; j < stickerData.length; j++) {
         if(stickerData[j]) {
-          appendStr += '<div class="iconBox"><img src="" alt="'+stickerData[j].name+
+          appendStr += '<div class="iconBox"><img src="' +stickerData[j].src+ '" alt="'+stickerData[j].name+
           '"></div></div>';
         }
       }

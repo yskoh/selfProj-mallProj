@@ -9,9 +9,9 @@
         </ul>
       </div>
       <div>
-        <form action="" method="post">
+        <form id="purchaseForm" action="" method="post">
           <input type="text" placeholder="orderer's name"/>
-          <input type="number" placeholder="orderer's mobile"/>
+          <input type="text" placeholder="orderer's mobile"/>
           <input type="text" placeholder="orderer's email"/>
           <input type="text" placeholder="receiver's name"/>
           <input type="text" placeholder="receiver's mobile"/>
@@ -21,9 +21,24 @@
           <input type="radio" value="card"/>
           <label for="cash">CASH</label>
           <input type="radio" value="cash"/>
-          <button type="submit">Purchase</button>
+          <button type="submit" id="purchaseBtn">Purchase</button>
         </form>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    //form에 있는 input이 비어있는지 없는지만 체크
+    //get list of all text inputs under form
+    var inputs = $('#purchaseForm > input[type=text]');
+    var inputLen = inputs.length;
+    $('#purchaseBtn').bind('click', function () {
+      for (var i = 0; i < inputLen; i++) {
+        if (!inputs[i].value) {
+          alert('input is empty');
+          break;
+        }
+      }
+    });
+    </script>
   </body>
 </html>

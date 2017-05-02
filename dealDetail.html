@@ -21,26 +21,19 @@
       </ul>
     </div>
     <div>share sns</div>
-    <div>recommendations</div>
+    <div>related product recommendations</div>
     <script>
     function sns_share(linkStr,snsType) {
   		var link = linkStr;
   		var title = "맛난 빵집 \n";
   		if(snsType === 'facebook') {
-
   			window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(link)+'&t='+encodeURIComponent(title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
-
-
-  		}
-
-  		if(snsType === 'kStory') {
+  		} else if (snsType === 'kStory') {
   			Kakao.Story.share({
   			 url: 'http://www.yeslkoh.com/',
   			  text: ''
   			});
-  		}
-
-  		if(snsType === 'google') {
+  		} else if(snsType === 'google') {
   			window.open('https://plus.google.com/u/0/share?url='+encodeURIComponent(link));
   		}
   		return false;

@@ -1,0 +1,19 @@
+{
+  "name": "mallproj",
+  "version": "1.0.0",
+  "description": "mall project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yskoh/mallProj.git"
+  },
+  "author": "yskoh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yskoh/mallProj/issues"
+  },
+  "homepage": "https://github.com/yskoh/mallProj#readme"
+}
